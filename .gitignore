@@ -6,6 +6,8 @@
 /.idea
 .env
 .phpunit.result.cache
+*.sqlite
+*.sqlite-journal
 Homestead.json
 Homestead.yaml
 npm-debug.log
