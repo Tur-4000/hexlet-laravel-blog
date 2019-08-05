@@ -15,10 +15,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/about', 'PageController@about');
-Route::get('/team', 'PageController@team');
+Route::get('/about', 'PageController@about')->name('about');
+Route::get('/team', 'PageController@team')->name('team');
 
-Route::get('/articles', 'ArticleController@index');
+Route::get('/articles', 'ArticleController@index')
+    ->name('articles.index');
 
 //Route::get('/about', function () {
 //    return view('about');
