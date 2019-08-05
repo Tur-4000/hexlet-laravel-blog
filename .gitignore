@@ -8,6 +8,8 @@
 .phpunit.result.cache
 *.sqlite
 *.sqlite-journal
+.phpstorm.meta.php
+_ide_helper.php
 Homestead.json
 Homestead.yaml
 npm-debug.log
