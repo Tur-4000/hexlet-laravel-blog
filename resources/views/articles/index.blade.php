@@ -17,7 +17,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div>
-                <a href="{{ route('article.create') }}" class="btn btn-outline-primary">Добавить</a>
+                <a href="{{ route('articles.create') }}" class="btn btn-outline-primary">Добавить</a>
             </div>
             <table class="table table-sm table-hover mt-1">
                 <thead>
@@ -30,12 +30,12 @@
                 @foreach($articles as $article)
                     <tr>
                         <td>
-                            <a href="{{ route('article.edit', $article->id) }}">
+                            <a href="{{ route('articles.edit', $article->id) }}">
                                 {{ $article->id }}
                             </a>
                         </td>
                         <td>
-                            <a href="{{ route('article.show', $article->id) }}">
+                            <a href="{{ route('articles.show', $article->id) }}">
                                 {{ $article->name }}
                             </a>
                         </td>
