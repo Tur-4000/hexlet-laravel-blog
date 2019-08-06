@@ -29,7 +29,11 @@
                 <tbody>
                 @foreach($articles as $article)
                     <tr>
-                        <td>{{ $article->id }}</td>
+                        <td>
+                            <a href="{{ route('article.edit', $article->id) }}">
+                                {{ $article->id }}
+                            </a>
+                        </td>
                         <td>
                             <a href="{{ route('article.show', $article->id) }}">
                                 {{ $article->name }}

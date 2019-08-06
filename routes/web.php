@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('articles.index');
 });
 
 Route::get('/about', 'PageController@about')->name('about');
@@ -27,9 +27,14 @@ Route::get('/articles/create', 'ArticleController@create')
 Route::get('/articles/{id}', 'ArticleController@show')
     ->name('article.show');
 
+Route::get('/articles/{id}/edit', 'ArticleController@edit')
+    ->name('article.edit');
 
+Route::post('/articles', 'ArticleController@store')
+    ->name('article.store');
 
-Route::post('/articles', 'ArticleController@store');
+Route::patch('/articles/{id}', 'ArticleController@update')
+    ->name('article.update');
 
 //Route::get('/about', function () {
 //    return view('about');

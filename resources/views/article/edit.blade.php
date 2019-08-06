@@ -6,11 +6,11 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-body">
-                    {{ Form::model($article, ['url' => route('article.store')]) }}
+                    {{ Form::model($article, ['url' => route('article.update', ['id' => $article->id]), 'method' => 'PATCH']) }}
 
-                        @include('article.form')
+                    @include('article.form')
 
-                        {{ Form::submit('Сохранить') }}
+                    {{ Form::submit('Обновить') }}
                     {{ Form::close() }}
                 </div>
             </div>

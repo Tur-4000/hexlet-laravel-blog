@@ -9,7 +9,7 @@ class ArticleController extends Controller
 {
     public function index()
     {
-        $articles = Article::paginate(5);
+        $articles = Article::paginate(15);
 
         return view('article.index', compact('articles'));
     }
@@ -50,5 +50,27 @@ class ArticleController extends Controller
                 ->withErrors(['msg' => 'Ошибка сохранения'])
                 ->withInput();
         }
+    }
+
+    public function edit($id)
+    {
+        $article = Article::findOrFail($id);
+
+        return view('article.edit', compact('article'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $article = Article::findOrFail($id);
+        $this->validate($request, [
+            'name' => 'required|unique:articles,'. $article->id,
+            'body' => 'required|min:100',
+        ]);
+
+        $article->fill($request->all());
+        $article->save();
+
+        return redirect()
+            ->route('articles.index');
     }
 }
