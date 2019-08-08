@@ -8,9 +8,9 @@
                 <div class="card-body">
                     {{ Form::model($article, ['url' => route('articles.update', ['id' => $article->id]), 'method' => 'PATCH']) }}
 
-                    @include('articles.form')
+                        @include('articles.form')
 
-                    {{ Form::submit('Обновить') }}
+                        {{ Form::submit('Обновить') }}
                     {{ Form::close() }}
                 </div>
             </div>

@@ -18,7 +18,8 @@ Route::get('/', function () {
 Route::get('/about', 'PageController@about')->name('about');
 Route::get('/team', 'PageController@team')->name('team');
 
-Route::resource('/articles', 'ArticleController');
+Route::resource('/articles', 'ArticleController')
+    ->names('articles');
 
 //Route::get('/articles', 'ArticleController@index')
 //    ->name('articles.index');

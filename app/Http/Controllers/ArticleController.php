@@ -41,7 +41,7 @@ class ArticleController extends Controller
     {
         $this->validate($request, [
             'name' => 'required|unique:articles',
-            'body' => 'required|min:1000',
+            'body' => 'required|min:100',
         ]);
 
         $article = new Article();
@@ -96,20 +96,38 @@ class ArticleController extends Controller
         ]);
 
         $article->fill($request->all());
-        $article->save();
+        $result = $article->save();
 
-        return redirect()
-            ->route('articles.index');
+        if ($result) {
+            return redirect()
+                ->route('articles.index')
+                ->with(['success' => 'Статья успешно изменена']);
+        } else {
+            return back()
+                ->withErrors(['msg' => 'Ошибка сохранения'])
+                ->withInput();
+        }
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Article  $article
+     * @param  string  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Article $article)
+    public function destroy($id)
     {
-        //
+        $article = Article::findOrFail($id);
+        $result = $article->delete();
+
+        if ($result) {
+            return redirect()
+                ->route('articles.index')
+                ->with(['success' => 'Статья успешно удалена']);
+        } else {
+            return back()
+                ->withErrors(['msg' => 'Ошибка удаления'])
+                ->withInput();
+        }
     }
 }

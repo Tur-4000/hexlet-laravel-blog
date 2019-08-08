@@ -24,6 +24,7 @@
                 <tr>
                     <th>ID</th>
                     <th>Name</th>
+                    <th></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -37,6 +38,20 @@
                         <td>
                             <a href="{{ route('articles.show', $article->id) }}">
                                 {{ $article->name }}
+                            </a>
+                        </td>
+                        <td>
+{{--                            <form action="{{ route('articles.destroy', $article->id) }}" method="post">--}}
+{{--                                @method('DELETE')--}}
+{{--                                @csrf--}}
+{{--                                <input type="submit" class="btn btn-link btn-sm" value="Удалить">--}}
+{{--                            </form>--}}
+                            <a href="{{ route('articles.destroy', $article->id) }}"
+                               data-method="delete"
+                               data-confirm="Вы уверены?"
+                               rel="nofollow"
+                               class="float-right">
+                                Удалить
                             </a>
                         </td>
                     </tr>
